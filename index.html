@@ -17,6 +17,12 @@
     <p>{{ sayHello() }}</p>
     <a v-bind:href="link">Google</a>
     <p v-html="finishedLink"></p>
+    <p>{{counter}}</p>
+    <button v-on:click="increase(2, $event)">Click me</button>
+    <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}
+      - <span v-on:mousemove.stop="">DEAD SPOT</span>
+    </p>
+    <input type="text" v-on:keyup.enter.space="alertMe">
   </div>
   <script src="./app.js"></script>
 </body>
