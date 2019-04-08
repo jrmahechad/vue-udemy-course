@@ -2,20 +2,23 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>VueJS</title>
-	<link rel="stylesheet" href="">
-	<script src="vue.js"></script>
-	
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>VueJS</title>
+  <link rel="stylesheet" href="">
+  <script src="vue.js"></script>
+
 </head>
 
 <body>
-	<div id="app">
-		<input type="text" v-on:input="changeGreeting"></input>
-		<p>{{ greeting }}</p>
-	</div>
-	<script src="./app.js"></script>
+  <div id="app">
+    <input type="text" v-on:input="changeGreeting"></input>
+    <h1 v-once>{{ greeting }}</h1>
+    <p>{{ sayHello() }}</p>
+    <a v-bind:href="link">Google</a>
+    <p v-html="finishedLink"></p>
+  </div>
+  <script src="./app.js"></script>
 </body>
 
 </html>
