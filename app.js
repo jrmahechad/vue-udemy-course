@@ -1,9 +1,9 @@
 new Vue({
-  el: '#app',
+  el: '#exercise',
   data: {
-    greeting: 'Hello World!',
-    link : 'http://www.google.com',
-    finishedLink: '<a href="http://www.google.com">Google</a>'
+    name:'Julian',
+    age: 30,
+    imageUrl: 'https://placekitten.com/408/287'
   },
   methods: {
     changeGreeting: function (event) {
