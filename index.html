@@ -12,38 +12,34 @@
 
 <body>
   <div id="app">
-    <input type="text" v-on:input="changeGreeting"></input>
-    <h1 v-once>{{ greeting }}</h1>
-    <p>{{ sayHello() }}</p>
-    <a v-bind:href="link">Google</a>
-    <a :href="link">Google with shorcut</a>
-    <p v-html="finishedLink"></p>
-    <button @click="counter++">Increase</button>
-    <button v-on:click="counter--">Decrease</button>
-    <button v-on:click="secondCounter++">Increase Second</button>
-    <p>Counter: {{counter}} ! {{secondCounter}}</p>
-    <p>Result: {{result()}} ! {{output}}</p>
-    <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}
-      - <span v-on:mousemove.stop="">DEAD SPOT</span>
-    </p>
-    <input type="text" v-on:keyup.enter.space="alertMe">
-    <input type="text" v-model="name">
-    <p>{{name}}</p>
-    
-    <div class="demo" @click="attachRed = !attachRed" :class="divClasses" ></div>
-    <div class="demo" :class="{red: attachRed}"></div>
-    <div class="demo" :class="[color, {red: attachRed}]"></div>
-    <hr>
-    <input type="text" v-model="color">
-    <hr>
-    <hr>
-    <div class="demo" :style="{backgroundColor: color2}" ></div>
-    <div class="demo" :style="myStyle"></div>
-    <div class="demo" :style="[myStyle, {height: width + 'px'}]" ></div>
-    <hr>
-    <input type="text" v-model="color2">
-    <input type="text" v-model="width">
-  </div>
+    <!-- 1) Start the Effect with the Button. The Effect should alternate the "highlight" or "shrink" class on each new setInterval tick (attach respective class to the div with id "effect" below) -->
+  <div>
+      <button @click="startEffect">Start Effect</button>
+      <div id="effect"></div>
+    </div>
+    <!-- 2) Create a couple of CSS classes and attach them via the array syntax -->
+    <div>I got no class :(</div>
+    <!-- 3) Let the user enter a class (create some example classes) and attach it -->
+    <div>
+      <input type="text">
+      <div></div>
+    </div>
+    <!-- 4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes -->
+    <div>
+      <input type="text">
+      <input type="text">
+      <div></div>
+    </div>
+    <!-- 5) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.  -->
+    <div>
+      <input type="text">
+      <div></div>
+    </div>
+    <!-- 6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button. -->
+    <div>
+      <button>Start Progress</button>
+      <div></div>
+    </div>
   <script src="./app.js"></script>
 </body>
 
