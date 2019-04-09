@@ -16,15 +16,20 @@
     <h1 v-once>{{ greeting }}</h1>
     <p>{{ sayHello() }}</p>
     <a v-bind:href="link">Google</a>
+    <a :href="link">Google with shorcut</a>
     <p v-html="finishedLink"></p>
-    <p>{{counter}}</p>
-    <button v-on:click="increase(2, $event)">Click me</button>
+    <button @click="counter++">Increase</button>
+    <button v-on:click="counter--">Decrease</button>
+    <button v-on:click="secondCounter++">Increase Second</button>
+    <p>Counter: {{counter}} ! {{secondCounter}}</p>
+    <p>Result: {{result()}} ! {{output}}</p>
     <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}
       - <span v-on:mousemove.stop="">DEAD SPOT</span>
     </p>
     <input type="text" v-on:keyup.enter.space="alertMe">
     <input type="text" v-model="name">
     <p>{{name}}</p>
+    
   </div>
   <script src="./app.js"></script>
 </body>
