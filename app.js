@@ -8,13 +8,29 @@ new Vue({
     secondCounter: 0,
     x: 0,
     y: 0,
-    name: 'Julian'
+    name: 'Julian',
+    attachRed: false,
+    color: 'green',
+    color2: 'gray',
+    width: 100
   },
   computed: {
     output: function(){
       console.log('Computed!')
       return this.counter > 5 ? 'Greater 5' : ' Smaller 5';
 
+    },
+    divClasses : function(){
+      return {
+        red: this.attachRed,
+        blue: !this.attachRed
+      }
+    },
+    myStyle: function(){
+      return {
+        backgroundColor: this.color2,
+        width : this.width + 'px',
+      }
     }
   },
   watch: {
