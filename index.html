@@ -5,44 +5,42 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>VueJS</title>
- <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
   <script src="vue.js"></script>
 
 </head>
 
 <body>
   <div id="app">
-    <input type="text" v-on:input="changeGreeting"></input>
-    <h1 v-once>{{ greeting }}</h1>
-    <p>{{ sayHello() }}</p>
-    <a v-bind:href="link">Google</a>
-    <a :href="link">Google with shorcut</a>
-    <p v-html="finishedLink"></p>
-    <button @click="counter++">Increase</button>
-    <button v-on:click="counter--">Decrease</button>
-    <button v-on:click="secondCounter++">Increase Second</button>
-    <p>Counter: {{counter}} ! {{secondCounter}}</p>
-    <p>Result: {{result()}} ! {{output}}</p>
-    <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}
-      - <span v-on:mousemove.stop="">DEAD SPOT</span>
-    </p>
-    <input type="text" v-on:keyup.enter.space="alertMe">
-    <input type="text" v-model="name">
-    <p>{{name}}</p>
-    
-    <div class="demo" @click="attachRed = !attachRed" :class="divClasses" ></div>
-    <div class="demo" :class="{red: attachRed}"></div>
-    <div class="demo" :class="[color, {red: attachRed}]"></div>
+    <p v-if="show">You can see me!(v-if)</p>
+    <p v-else>Noy you see me!(v-else)</p>
+    <template v-if="show">
+      <h1>Heading</h1>
+      <p>Inside a template</p>
+    </template>
+    <p v-show="show">Do you also see me?(v-show)</p>
+    <button @click="show = !show">toggle</button>
     <hr>
-    <input type="text" v-model="color">
+    <ul>
+      <li v-for="ingredient in ingredients">{{ingredient}}</li>
+    </ul>
+    <ul>
+      <li v-for="(ingredient, i) in ingredients" :key="ingredient">{{ingredient}} {{i}}</li>
+    </ul>
+    <button @click="ingredients.push('spices')">Add New</button>
     <hr>
+    <ul>
+      <li v-for="person in persons">
+        <span v-for="(value, key, index) in person">{{key}}: {{value}} ({{index}}) </span>  
+      </li>
+    </ul>
     <hr>
-    <div class="demo" :style="{backgroundColor: color2}" ></div>
-    <div class="demo" :style="myStyle"></div>
-    <div class="demo" :style="[myStyle, {height: width + 'px'}]" ></div>
+    <span v-for="n in 10">{{n}} </span>
     <hr>
-    <input type="text" v-model="color2">
-    <input type="text" v-model="width">
+    <template v-for="(ingredient, index) in ingredients">
+      <h1>{{ingredient}}</h1>
+      <p>{{index}}</p>
+    </template>
   </div>
   <script src="./app.js"></script>
 </body>
