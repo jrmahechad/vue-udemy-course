@@ -11,36 +11,15 @@
 </head>
 
 <body>
-  <div id="app">
-    <p v-if="show">You can see me!(v-if)</p>
-    <p v-else>Noy you see me!(v-else)</p>
-    <template v-if="show">
-      <h1>Heading</h1>
-      <p>Inside a template</p>
-    </template>
-    <p v-show="show">Do you also see me?(v-show)</p>
-    <button @click="show = !show">toggle</button>
-    <hr>
-    <ul>
-      <li v-for="ingredient in ingredients">{{ingredient}}</li>
-    </ul>
-    <ul>
-      <li v-for="(ingredient, i) in ingredients" :key="ingredient">{{ingredient}} {{i}}</li>
-    </ul>
-    <button @click="ingredients.push('spices')">Add New</button>
-    <hr>
-    <ul>
-      <li v-for="person in persons">
-        <span v-for="(value, key, index) in person">{{key}}: {{value}} ({{index}}) </span>  
-      </li>
-    </ul>
-    <hr>
-    <span v-for="n in 10">{{n}} </span>
-    <hr>
-    <template v-for="(ingredient, index) in ingredients">
-      <h1>{{ingredient}}</h1>
-      <p>{{index}}</p>
-    </template>
+  <div id="app1">
+    <h1 ref="heading">{{ title }}</h1>
+    <button v-on:click="show">Show Paragraph</button>
+    <p v-if="showParagraph">This is not always visible</p>
+  </div>
+  <div id="app2">
+    <h1 ref="heading">{{ title }}</h1>
+    <button v-on:click="show">Show Paragraph</button>
+    <p v-if="showParagraph">This is not always visible</p>
   </div>
   <script src="./app.js"></script>
 </body>

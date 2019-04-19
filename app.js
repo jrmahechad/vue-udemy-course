@@ -1,12 +1,33 @@
 new Vue({
-  el: '#app',
+  el: '#app1',
   data: {
-    show:true,
-    ingredients: ['meat', 'fruit', 'cookies'],
-    persons: [
-      {name: 'Max', age: '27', color: 'red'},
-      {name: 'Anna', age: '29', color: 'blue'}
-    ]
-    
+    title: 'The VueJS Instance',
+    showParagraph: false
   },
+  methods: {
+    show: function() {
+      this.showParagraph = true;
+      this.updateTitle('The VueJS Instance (Updated)');
+    },
+    updateTitle: function(title) {
+      this.title = title;
+    }
+  },
+  computed: {
+    lowercaseTitle: function() {
+      return this.title.toLowerCase();
+    }
+  },
+  watch: {
+    title: function(value) {
+      alert('Title changed, new value: ' + value);
+    }
+  }
+});
+
+new Vue({
+  el:'#app2',
+  data:{
+    title:'The second instance'
+  }
 })
