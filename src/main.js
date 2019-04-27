@@ -1,12 +1,10 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from "vue";
+import App from "./App.vue";
+import Home from "./Home.vue";
+
+Vue.component('app-server-status', Home);
 
 new Vue({
-  el: '#app1',
+  el: "#app",
   render: h => h(App)
-})
-
-new Vue({
-  el: '#app2',
-  render: h => h(App)
-})
+});
