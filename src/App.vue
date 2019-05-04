@@ -1,32 +1,50 @@
 <template>
   <div class="container">
-    <app-header></app-header>
-    <hr>
     <div class="row">
-      <servers></servers>
-      <app-server-details></app-server-details>
+      <div class="col-xs-12">
+        <button @click="selectedComponent = 'appQuote'">Quote</button>
+        <button @click="selectedComponent = 'appAuthor'">Author</button>
+        <button @click="selectedComponent = 'appNew'">New</button>
+        <hr>
+        <p>{{selectedComponent}}</p>
+        <keep-alive>
+          <component :is="selectedComponent">
+            <p>Default Content</p>
+          </component>
+        </keep-alive>
+        <component :is="selectedComponent">
+          <p>Default Content</p>
+        </component>
+        <!--<app-quote>
+          <h2 slot="title">{{quoteTitle}}</h2>
+          <p >A wonderful Quote</p>
+        </app-quote>-->
+      </div>
     </div>
-    <hr>
-    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
-import Header from "./components/Shared/Header.vue";
-import Footer from "./components/Shared/Footer.vue";
-import Servers from "./components/Server/Servers.vue";
-
-import ServerDetails from "./components/Server/ServerDetails.vue";
-
+import Quote from "./components/Quote.vue";
+import Author from "./components/Author";
+import New from "./components/New";
 export default {
+  data: function() {
+    return {
+      quoteTitle: " A Quote",
+      selectedComponent: "appQuote"
+    };
+  },
   components: {
-    appHeader: Header,
-    Servers,
-    "app-server-details": ServerDetails,
-    "app-footer": Footer
+    appQuote: Quote,
+    appAuthor: Author,
+    appNew: New
   }
 };
 </script>
 
-<style>
+<style scoped>
+h2 {
+  color: red;
+}
 </style>
