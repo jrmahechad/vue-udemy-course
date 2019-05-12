@@ -1,42 +1,105 @@
 <template>
   <div class="container">
-    <app-header :maxQuotes="maxQuotes" :quoteCount="quotes.length"></app-header>
-    <app-new-quote @quoteAdded="newQuote"></app-new-quote>
-    <app-quote-grid :quotes="quotes" @quoteDeleted="deleteQuote"></app-quote-grid>
-    <div class="row">
-      <div class="col-sm-12 text-center">
-        <div class="alert alert-info">Info: Click on a Quote to delete it!!</div>
+    <form>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+          <!-- Exercise 1 -->
+          <!-- Create a Signup Form where you retrieve the following Information -->
+          <!-- Full Name (First Name + Last Name) -->
+          <!-- Mail -->
+          <!-- Password -->
+          <!-- Store Data? Yes/No -->
+
+          <!-- Exercise 2 -->
+          <!-- Only display the Form if it has NOT been submitted -->
+          <!-- Display the Data Summary ONCE the Form HAS been submitted -->
+
+          <!-- Exercise 3 -->
+          <!-- Edit the Example from above and create a custom "Full Name" Control -->
+          <!-- which still holds the First Name and Last Name Input Field -->
+        </div>
+      </div>
+    </form>
+    <hr>
+    <div class="row" v-if="!isSubmitted">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>Fill your Data</h4>
+          </div>
+          <div class="panel-body">
+            <form>
+              <app-full-name v-model="userData.fullname"></app-full-name>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="text"
+                  id="email"
+                  class="form-control"
+                  v-model="userData.email"
+                >
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  type="text"
+                  id="password"
+                  class="form-control"
+                  v-model="userData.password"
+                >
+              </div>
+              <div class="form-group">
+                <label for="store">Store Data</label>
+                <input
+                  type="checkbox"
+                  id="store"
+                  class="form-control"
+                  v-model="userData.store"
+                >
+              </div>
+              <button class="btn btn-primary" @click.prevent="submitted">Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
+    <hr>
+    <div class="row" v-if="true">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>Your Data</h4>
+          </div>
+          <div class="panel-body">
+            <p>Full Name: {{userData.fullname}}</p>
+            <p>Mail: {{userData.email}}</p>
+            <p>Password: {{userData.password}}</p>
+            <p>Store in Database?: {{userData.store}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div>
 </template>
 
 <script>
-import QuoteGrid from "./components/QuoteGrid.vue";
-import NewQuote from "./components/NewQuote.vue";
-import Header from "./components/Header";
+
+import FullName from './FullName.vue';
 export default {
-  data: function() {
+  data:function () {
     return {
-      maxQuotes: 10,
-      quotes: ["Just a simgle Quote"]
-    };
+      userData : {},
+      isSubmitted: false,
+    }
   },
   methods: {
-    newQuote(quote) {
-        if(this.quotes.length >= this.maxQuotes){
-            return alert('Please delete quotes first!!')
-        }
-      this.quotes.push(quote);
-    },
-    deleteQuote(index) {
-      this.quotes.splice(index, 1);
+    submitted: function() {
+      this.isSubmitted = true;
     }
   },
   components: {
-    appQuoteGrid: QuoteGrid,
-    appNewQuote: NewQuote,
-    appHeader: Header
+    appFullName:FullName
   }
 };
 </script>
