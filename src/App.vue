@@ -1,45 +1,24 @@
 <template>
-  <div class="container">
-    <app-header :maxQuotes="maxQuotes" :quoteCount="quotes.length"></app-header>
-    <app-new-quote @quoteAdded="newQuote"></app-new-quote>
-    <app-quote-grid :quotes="quotes" @quoteDeleted="deleteQuote"></app-quote-grid>
-    <div class="row">
-      <div class="col-sm-12 text-center">
-        <div class="alert alert-info">Info: Click on a Quote to delete it!!</div>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                <h1>Animations</h1>
+
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
-import QuoteGrid from "./components/QuoteGrid.vue";
-import NewQuote from "./components/NewQuote.vue";
-import Header from "./components/Header";
-export default {
-  data: function() {
-    return {
-      maxQuotes: 10,
-      quotes: ["Just a simgle Quote"]
-    };
-  },
-  methods: {
-    newQuote(quote) {
-        if(this.quotes.length >= this.maxQuotes){
-            return alert('Please delete quotes first!!')
+    export default {
+        data() {
+            return {
+
+            }
         }
-      this.quotes.push(quote);
-    },
-    deleteQuote(index) {
-      this.quotes.splice(index, 1);
     }
-  },
-  components: {
-    appQuoteGrid: QuoteGrid,
-    appNewQuote: NewQuote,
-    appHeader: Header
-  }
-};
 </script>
 
 <style>
+
 </style>
