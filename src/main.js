@@ -1,11 +1,10 @@
 import Vue from 'vue'
+import VueResource from 'vue-resource'
 import App from './App.vue'
 
-Vue.filter('append-length', function(value) {
-    return `${value} (${value.length})`;
-});
+Vue.use(VueResource);
 
 new Vue({
   el: '#app',
   render: h => h(App)
-})
+});
